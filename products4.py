@@ -1,14 +1,4 @@
-# 讀取現有檔案清單
 products = []
-with open('products.csv', 'r', encoding = 'utf-8') as f:
-    for line in f:
-        if ('商品,價格') in line:
-            continue
-        name, price = line.strip().split(',') 
-        products.append([name, price])
-print(products)
-       
-# 輸入新品項清單
 while True:
     name = input('商品名稱：')
     if name == 'q':
@@ -20,15 +10,12 @@ print(products)
 for p in products:
     print(p[0], '的價格', p[1])
 
-# 統整完寫入檔案
+
 with open('products.csv', 'w', encoding = 'utf-8') as f:
+    # 在還沒輸入東西前 先寫入欄位名稱
     f.write('商品,價格\n')
     for p in products:
         f.write(p[0] + ',' + p[1] + '\n')
-       
-
-
-
        
 
 
